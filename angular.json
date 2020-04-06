@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/ngx-gtm/tsconfig.lib.json",
             "project": "projects/ngx-gtm/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-gtm/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
