@@ -1,27 +1,63 @@
-# NgxGtm
+# ngx-gtm
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+Library for integrating Google Tag Manager into Angular application. Easy to use, SSR ready.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+First you need to install the npm module:
 
-## Code scaffolding
+`npm install ngx-gtm --save`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+Import `GtmModule` in your `AppModule` with following configuration:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```typescript
+@NgModule({
+  imports: [
+    // ...
+    GtmModule.forRoot({
+      gtmId: 'GTM-XXXXXXX',
+    }),
+  ],
+})
+```
 
-## Running unit tests
+That's it. Google Tag Manager is initialized and ready to use.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Configuration
 
-## Running end-to-end tests
+Configuration structure is following:
+```typescript
+{
+  gtmId: string;
+  isEnabled?: boolean;
+}
+```
+- `gtmId` is your Google Tag Manager ID in format `GTM-XXXXXXX` and it's required
+- `isEnabled` (optional, default `true`) - you can disable whole module by setting this option to `false` (useful eg. for dev environment)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Using Data Layer
 
-## Further help
+You can also inject `GtmService` in your component (or service or whatever) to push Google Tag Manager tags:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```typescript
+constructor(
+    // ...
+    private gtm: GtmService,
+) { }
+```
+
+To push to Data Layer, just call `push` method:
+```typescript
+private function pageView() {
+  this.gtm.push({event: 'event_name'});
+}
+```
+
+For more information about Data Layer usage, follow [Google Developer Guide](https://developers.google.com/tag-manager/devguide#events).
+
+
+Avoid direct usage of `window.dataLayer` or `dataLayer`. You should always access it only via `GtmService` (as described above). It's mainly because of SSR.
+
+So instead `window.dataLayer.push({event: 'xxx'})`, it should always be `this.gtm.push({event: xxx})`

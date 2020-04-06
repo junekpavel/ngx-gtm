@@ -1,0 +1,19 @@
+{
+  "name": "ngx-gtm",
+  "description": "Simple Google Tag Manager integration for Angular",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junekpavel/ngx-gtm"
+  },
+  "author": "Pavel Junek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/junekpavel/ngx-gtm/issues"
+  },
+  "homepage": "https://github.com/junekpavel/ngx-gtm#readme"
+}
