@@ -1,4 +1,4 @@
-import {ApplicationInitStatus, Inject, Injectable, Optional, PLATFORM_ID} from '@angular/core';
+import {ApplicationInitStatus, Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {gtmConfigService} from './gtm.module';
 import {GtmConfig} from './gtm-config';
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';

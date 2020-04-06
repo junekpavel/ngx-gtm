@@ -50,9 +50,7 @@ constructor(
 
 To push to Data Layer, just call `push` method:
 ```typescript
-private function pageView() {
-  this.gtm.push({event: 'event_name'});
-}
+this.gtm.push({event: 'event_name'});
 ```
 
 For more information about Data Layer usage, follow [Google Developer Guide](https://developers.google.com/tag-manager/devguide#events).
@@ -60,4 +58,4 @@ For more information about Data Layer usage, follow [Google Developer Guide](htt
 
 Avoid direct usage of `window.dataLayer` or `dataLayer`. You should always access it only via `GtmService` (as described above). It's mainly because of SSR.
 
-So instead `window.dataLayer.push({event: 'xxx'})`, it should always be `this.gtm.push({event: xxx})`
+So instead `window.dataLayer.push({event: 'xxx'})`, it should always be `this.gtm.push({event: xxx})`.

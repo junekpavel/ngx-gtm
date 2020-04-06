@@ -1,4 +1,4 @@
-import {InjectionToken, Injector, ModuleWithProviders, NgModule, Optional} from '@angular/core';
+import {InjectionToken, Injector, ModuleWithProviders, NgModule} from '@angular/core';
 import {GtmConfig} from './gtm-config';
 import {GtmService} from './gtm.service';
 

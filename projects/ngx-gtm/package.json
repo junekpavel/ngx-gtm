@@ -1,7 +1,7 @@
 {
   "name": "ngx-gtm",
   "description": "Simple Google Tag Manager integration for Angular",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/junekpavel/ngx-gtm/issues"
   },
-  "homepage": "https://github.com/junekpavel/ngx-gtm#readme"
+  "homepage": "https://github.com/junekpavel/ngx-gtm#readme",
+  "keywords": [
+    "angular",
+    "ng",
+    "ngx",
+    "google tag manager",
+    "gtm",
+    "gtm.js",
+    "gtag",
+    "gtag.js"
+  ]
 }
