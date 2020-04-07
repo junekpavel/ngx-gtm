@@ -1,4 +1,4 @@
-import {InjectionToken, Injector, ModuleWithProviders, NgModule} from '@angular/core';
+import {InjectionToken, ModuleWithProviders, NgModule} from '@angular/core';
 import {GtmConfig} from './gtm-config';
 import {GtmService} from './gtm.service';
 
@@ -29,12 +29,6 @@ export const gtmConfigService = new InjectionToken<GtmConfig>('GtmConfig');
 @NgModule()
 export class GtmModule {
 
-  constructor(
-    private injector: Injector,
-  ) {
-    injector.get(GtmService).postponeInitialization();
-  }
-
   /**
    * Creates and configures GTM module.
    *
@@ -44,10 +38,13 @@ export class GtmModule {
 
     return {
       ngModule: GtmModule,
-      providers: [{
-        provide: gtmConfigService,
-        useValue: config,
-      }],
+      providers: [
+        GtmService,
+        {
+          provide: gtmConfigService,
+          useValue: config,
+        }
+      ],
     };
 
   }

@@ -3,9 +3,7 @@ import {gtmConfigService} from './gtm.module';
 import {GtmConfig} from './gtm-config';
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class GtmService {
 
   /**
@@ -27,6 +25,7 @@ export class GtmService {
     private applicationInitStatus: ApplicationInitStatus,
   ) {
     this.domDocument = domDocument;
+    this.postponeInitialization();
   }
 
   /**
@@ -47,10 +46,6 @@ export class GtmService {
    */
   public postponeInitialization(): void {
 
-    if (!this.config || (this.config && !(!!this.config.gtmId || this.config.isEnabled === false))) {
-      throw new Error('gtmId must be provided');
-    }
-
     this.applicationInitStatus.donePromise
       .then(() => {
         this.init();
@@ -61,6 +56,11 @@ export class GtmService {
    * Initialize service - create dataLayer and setup necessary HTML code
    */
   private init(): void {
+
+    if (!this.config || (this.config && !(!!this.config.gtmId || this.config.isEnabled === false))) {
+      throw new Error('gtmId must be provided');
+    }
+
     if (!this.initialized && this.config.isEnabled !== false) {
       this.initDataLayer();
       this.pushToDataLayer({

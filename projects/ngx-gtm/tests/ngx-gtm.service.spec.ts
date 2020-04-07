@@ -4,6 +4,15 @@ import {gtmConfigService} from '../src/lib/gtm.module';
 
 describe('NgxGtmService', () => {
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        GtmService,
+      ],
+    });
+  });
+
+
   it('should not be created when no config provided', () => {
     expect(() => TestBed.get(GtmService)).toThrowError();
   });
