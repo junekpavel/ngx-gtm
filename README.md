@@ -6,7 +6,9 @@ Library for integrating Google Tag Manager into Angular application. Easy to use
 
 First you need to install the npm module:
 
-`npm install ngx-gtm --save`
+```bash
+npm install ngx-gtm --save
+```
 
 ## Usage
 
@@ -59,3 +61,8 @@ For more information about Data Layer usage, follow [Google Developer Guide](htt
 Avoid direct usage of `window.dataLayer` or `dataLayer`. You should always access it only via `GtmService` (as described above). It's mainly because of SSR.
 
 So instead `window.dataLayer.push({event: 'xxx'})`, it should always be `this.gtm.push({event: xxx})`.
+
+
+## IE support
+
+If you wan't to support IE browsers, you'll need `ParentNode.prepend` method polyfill. You can use [this one](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/prepend#Polyfill) and include it into your `src/polyfills.ts` file.
